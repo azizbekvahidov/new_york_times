@@ -92,7 +92,7 @@ class CategoryController extends Controller
     public function destroy($id)
     {
         $categoryList = Category::where('id', $id)->firstorfail()->delete();
-          return redirect()->route("category.index");
+        return redirect()->route("category.index");
         // $categoryList = Category::find($id);
         // $categoryList->delete();
         // return redirect()->route("category.index");
