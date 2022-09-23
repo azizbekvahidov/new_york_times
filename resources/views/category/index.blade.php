@@ -26,11 +26,11 @@
                         {{-- <form action="{{route("category.delete",$category->id)}}" method="POST" class="btn btn-danger">
                             @csrf
                             @method("delete")
-                            <input type="submit" value="delete">
+                            <input type="submit" value="delete">   eto logika poproshe
                         </form> --}}
                     </td>
                     <form id="delete-form-{{$category->id}}" 
-                        + action="{{route('category.delete', $category->id)}}"
+                        + action="{{route('category.delete', $category->id)}}" 
                         method="post">
                       @csrf @method('DELETE')
                   </form>
