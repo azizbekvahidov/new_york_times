@@ -9,4 +9,9 @@ class News extends Model
 {
     use HasFactory;
     protected $table = 'news';
+
+    public function tags()
+    {
+        return $this->belongsToMany(Tag::class, 'news_tags', 'news_id', 'tag_id');
+    }
 }
