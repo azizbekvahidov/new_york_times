@@ -9,5 +9,11 @@ class CategoryService{
        Category::create($validated);
     }
 
+    public function update($validated, $id){
+
+        $category = Category::find($id);
+        $category->name = $validated['name'];
+        $category->save();
+    }
 
 }

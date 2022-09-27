@@ -42,7 +42,7 @@ class CategoryController extends Controller
      * @param  \Illuminate\Http\Request\CategoryRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(CategoryRequest $request)
+    public function store(CategoryRequest $request )
     {
         $this->categoryService->create($request->validated());
         return redirect(route("category.index"));
@@ -67,7 +67,8 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-        //
+        $category = Category::find($id);
+        return view('category.edit',['category'=>$category]);
     }
 
     /**
@@ -77,9 +78,10 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(CategoryRequest $request, $id)
     {
-        //
+        $this->categoryService->update($request->validated() , $id);
+        return redirect(route('category.index'));
     }
 
     /**

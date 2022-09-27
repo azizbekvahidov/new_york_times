@@ -21,6 +21,6 @@ Route::group([
     Route::get("create",[CategoryController::class, 'create'])->name("create");
     Route::put("store",[CategoryController::class, 'store'])->name("store");
     Route::get("edit/{id}",[CategoryController::class, 'edit'])->name("edit");
-    Route::patch("update{id}",[CategoryController::class, 'update'])->name("update");
+    Route::post("update{id}",[CategoryController::class, 'update'])->name("update");
     Route::delete("delete{id}",[CategoryController::class, 'delete'])->name("delete");
 });
