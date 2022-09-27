@@ -6,6 +6,7 @@ use App\Http\Requests\CategoryRequest;
 use App\Models\Category;
 use App\Services\CategoryService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class CategoryController extends Controller
 {
@@ -23,7 +24,7 @@ class CategoryController extends Controller
     public function index()
     {
         $categoryList = Category::all();
-        return view("category.index",["categoryList" => $categoryList]);
+        return view("category.index", ["categoryList" => $categoryList]);
     }
 
     /**
@@ -92,6 +93,10 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        //
+        // $categoryList = Category::where('id', $id)->firstorfail()->delete();
+        // return redirect()->route("category.index");
+        $categoryList = Category::find($id);//обе логике работают исправно
+        $categoryList->delete();
+        return redirect()->route("category.index");
     }
 }
