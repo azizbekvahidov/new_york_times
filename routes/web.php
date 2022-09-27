@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use \App\Http\Controllers\CategoryController;
+use App\Http\Controllers\NewsController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -24,5 +26,19 @@ Route::group([
     Route::get("edit/{id}", [CategoryController::class, 'edit'])->name("edit");
     Route::patch("update{id}", [CategoryController::class, 'update'])->name("update");
     Route::delete("delete{id}", [CategoryController::class, 'destroy'])->name("delete");
+
+});
+
+Route::group([
+    "prefix" => "news",
+    "as" => "news.",
+
+], function () {
+    Route::get("", [NewsController::class, "index"])->name("index");
+    Route::get("create", [NewsController::class, 'create'])->name("create");
+    Route::put("store", [NewsController::class, 'store'])->name("store");
+    Route::get("edit/{id}", [NewsController::class, 'edit'])->name("edit");
+    Route::patch("update{id}", [NewsController::class, 'update'])->name("update");
+    Route::delete("delete{id}", [NewsController::class, 'destroy'])->name("delete");
 
 });
