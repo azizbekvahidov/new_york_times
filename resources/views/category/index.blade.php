@@ -20,17 +20,12 @@
                     <td>{{$category->name}}</td>
                     <td>
                         <a href="{{ route("category.edit",$category->id) }}" class="btn btn-info">update</a>
-                        <a href="{{ route("category.delete",$category->id) }}" class="btn btn-danger"  
+                        <a href="{{ route("category.delete",$category->id) }}" class="btn btn-danger"
                             onclick="event.preventDefault();document.getElementById(
                              'delete-form-{{$category->id}}').submit();">delete</a>
-                        {{-- <form action="{{route("category.delete",$category->id)}}" method="POST" class="btn btn-danger">
-                            @csrf
-                            @method("delete")
-                            <input type="submit" value="delete">   eto logika poproshe
-                        </form> --}}
                     </td>
-                    <form id="delete-form-{{$category->id}}" 
-                        + action="{{route('category.delete', $category->id)}}" 
+                    <form id="delete-form-{{$category->id}}"
+                        + action="{{route('category.delete', $category->id)}}"
                         method="post">
                       @csrf @method('DELETE')
                   </form>
