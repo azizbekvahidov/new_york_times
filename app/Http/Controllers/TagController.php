@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Http\Requests\Tagrequest;
 use App\Services\TagService;
+use App\Models\Tag;
 
 class TagController extends Controller
 {
@@ -40,7 +41,7 @@ class TagController extends Controller
      * @param  \Illuminate\Http\Request\CategoryRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(TagRequest $request )
+    public function store(Tagrequest $request )
     {
         $this->tagService->create($request->validated());
         return redirect(route("tag.index"));

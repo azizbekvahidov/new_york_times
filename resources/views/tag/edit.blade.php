@@ -1,7 +1,7 @@
 @extends('layout.main')
 
 @section('content')
-    <form action="{{ route('tag.update', $category->id) }}" method="POST" enctype="multipart/form-data">
+    <form action="{{ route('tag.update', $tag->id) }}" method="POST" enctype="multipart/form-data">
         @csrf
         @method('patch')
         <input type="text" placeholder="name" name="name" value="{{ $tag->name }}"><br>
