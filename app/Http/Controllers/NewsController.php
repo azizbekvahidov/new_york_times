@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\NewsRequest;
 use App\Models\Category;
 use App\Models\News;
+use App\Models\Tag;
 use App\Services\NewsService;
 use Illuminate\Http\Request;
 
@@ -36,7 +37,8 @@ class NewsController extends Controller
     public function create()
     {
         $category = Category::all();
-        return view("news.create",['category' => $category]);
+        $tags = Tag::all();
+        return view("news.create",['category' => $category,'tags' =>$tags,]);
         //
     }
 

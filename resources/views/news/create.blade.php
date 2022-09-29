@@ -19,6 +19,24 @@
                     </div>
                 @enderror
             </div>
+
+            <div class="col-3 row form-group">
+                <label for="staticEmail" class="col-sm-2 col-form-label">Tags</label>
+                <div class="col-sm-10">
+
+                    <select class="select2 form-control" multiple="multiple" name="tags[]">
+
+                            @foreach($tags as $tag)
+                                <option value="{{$tag->id}}">{{$tag->name}}</option>
+                            @endforeach
+                    </select>
+                </div>
+                @error('author')
+                <div class="alert alert-danger" role="alert">
+                    {{ $message }}
+                </div>
+                @enderror
+            </div>
             <div class="col-3 row form-group">
                 <label for="staticEmail" class="col-sm-2 col-form-label">Content</label>
                 <div class="col-sm-10">
@@ -30,6 +48,7 @@
                     </div>
                 @enderror
             </div>
+
             <div class="col-3 row form-group">
                 <label for="staticEmail" class="col-sm-2 col-form-label">Author</label>
                 <div class="col-sm-10">

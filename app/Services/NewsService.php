@@ -13,6 +13,7 @@ class NewsService{
         $news->category_id = $validated["category_id"];
         $news->image = $this->fileStore($file);
         $news->save();
+        //$news->id
         return $news;
     }
 
