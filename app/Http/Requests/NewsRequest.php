@@ -27,7 +27,7 @@ class NewsRequest extends FormRequest
             'title'=> 'required|string|unique:news|max:250',
             'content'=> 'required|string',
             'author'=> 'required|string',
-            'category_id' => 'required',
+            'category_id' => 'required|integer|exists:categories,id',
             'image' => 'required|mimes:png,jpg,jpeg,gif'
         ];
     }
