@@ -2,7 +2,10 @@
 
 use Illuminate\Support\Facades\Route;
 use \App\Http\Controllers\CategoryController;
+
 use \App\Http\Controllers\TagController;
+use App\Http\Controllers\NewsController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -30,6 +33,7 @@ Route::group([
 });
 
 
+
 Route::group([
     "prefix" => "tag",
     "as" => "tag.",
@@ -41,5 +45,19 @@ Route::group([
     Route::get("edit/{id}", [TagController::class, 'edit'])->name("edit");
     Route::patch("update{id}", [TagController::class, 'update'])->name("update");
     Route::delete("delete{id}", [TagController::class, 'destroy'])->name("delete");
+
+});
+Route::group([
+    "prefix" => "news",
+    "as" => "news.",
+
+], function () {
+    Route::get("", [NewsController::class, "index"])->name("index");
+    Route::get("create", [NewsController::class, 'create'])->name("create");
+    Route::put("store", [NewsController::class, 'store'])->name("store");
+    Route::get("edit/{id}", [NewsController::class, 'edit'])->name("edit");
+    Route::patch("update{id}", [NewsController::class, 'update'])->name("update");
+    Route::delete("delete{id}", [NewsController::class, 'destroy'])->name("delete");
+
 
 });
