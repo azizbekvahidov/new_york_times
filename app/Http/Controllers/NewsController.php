@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\NewsRequest;
 use App\Models\Category;
 use App\Models\News;
 use App\Services\NewsService;
@@ -45,10 +46,10 @@ class NewsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(NewsRequest $request)
     {
-        dd($request);
-        //
+        $this->newsService->store($request->validated(), $request->file());
+        return redirect(route("news.index"));
     }
 
     /**
