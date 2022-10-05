@@ -7,7 +7,9 @@ use App\Models\Category;
 use App\Models\News;
 use App\Models\Tag;
 use App\Services\NewsService;
+use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class NewsController extends Controller
 {
@@ -50,8 +52,17 @@ class NewsController extends Controller
      */
     public function store(NewsRequest $request)
     {
-        $this->newsService->store($request->validated());
-        return redirect(route("news.index"));
+        DB::beginTransaction();
+        try{
+            $news = $this->newsService->store($request->validated());
+            $this->newsService->storeTags($request->validated(),$news);
+            DB::commit();
+            return redirect(route("news.index"));
+        }
+        catch(Exception $e){
+            DB::rollBack();
+            return redirect(route("news.create"));
+        }
     }
 
     /**
@@ -73,7 +84,14 @@ class NewsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $news = News::find($id);
+        $category = Category::all();
+        $tags = Tag::all();
+        return view("news.edit",[
+            'category' => $category,
+            'tags' =>$tags,
+            'news'=>$news
+        ]);
     }
 
     /**
@@ -85,7 +103,17 @@ class NewsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        DB::beginTransaction();
+        try{
+            $news = $this->newsService->update($request->validated(),$id);
+            $this->newsService->updateTags($request->validated(),$news);
+            DB::commit();
+            return redirect(route("news.index"));
+        }
+        catch(Exception $e){
+            DB::rollBack();
+            return redirect(route("news.create"));
+        }
     }
 
     /**
