@@ -9,6 +9,13 @@ class News extends Model
 {
     use HasFactory;
     protected $table = 'news';
+    protected $fillable = [
+        'title',
+        'content',
+        'author',
+        'category_id',
+        'image',
+    ];
 
     public function tags()
     {

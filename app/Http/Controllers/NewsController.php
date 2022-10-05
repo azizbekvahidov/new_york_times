@@ -50,7 +50,7 @@ class NewsController extends Controller
      */
     public function store(NewsRequest $request)
     {
-        $this->newsService->store($request->validated(), $request->file());
+        $this->newsService->store($request->validated());
         return redirect(route("news.index"));
     }
 
