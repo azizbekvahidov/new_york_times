@@ -1,0 +1,594 @@
+@font-face {
+    font-family: "Engravers" ;
+    src: url(fonts/Engravers\ Old\ English\ Bold.otf)
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    border: 0;
+}
+
+a {
+    text-decoration: none;
+    color: #000;
+}
+
+/* =========================
+    Page Layout
+   =========================
+*/
+
+.container {
+    display: flex;
+    overflow-x: hidden;
+    flex-direction: column;
+    width: 100vw;
+    max-width: 1200px;
+    margin: auto;
+}
+
+
+/* =========================
+    Lists
+   =========================
+*/
+
+ul {
+    list-style: none;
+}
+
+/* =========================
+    Links
+   =========================
+*/
+
+article a {
+    color: #145181;
+    
+}
+
+/* =========================
+    Navigation
+   =========================
+*/
+
+nav {
+    height: 50px;
+    border-bottom: 1px solid lightgray;
+    font-family: Arial, Helvetica, sans-serif;
+    position: fixed;
+    background: white;
+    width: 100%;
+}
+
+nav ul {
+    height: 50px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    font-size: .9em;
+    padding: 0 10px;
+}
+
+nav ul li {
+    font-weight: bold;
+    position: relative;
+    flex: 1 0 auto;
+}
+
+nav ul li:nth-of-type(-n+3) {
+    flex: .5;
+}
+
+nav ul li {
+    flex: 1;
+    text-align: center;
+}
+
+
+
+.has-children ul, .has-children ul .has-children ul, .has-children .has-children h4 {
+    display: none;
+    border: 1px solid lightgray;
+    position: absolute;
+    top: -8px;
+    left: 0;
+    flex-direction: column;
+    height: 100vh;
+    padding: 10px;
+    width: 200px;
+    z-index: 2;
+    background: white;
+    opacity: 1;
+}
+
+.has-children ul .has-children ul, .has-children .has-children h4 {
+    height: auto;
+}
+
+.has-children ul .has-children ul, .has-children .has-children h4 {
+    left: 100%;
+    top: -8px;
+}
+
+.has-children ul li {
+    padding: 5px 5px;
+    text-align: left;
+    width: 100%;
+}
+
+.has-children ul li:hover {
+    background: rgb(204, 226, 255);
+}
+
+.active ul {
+    display: flex;
+    flex-direction: column;  
+}
+
+
+.logo {
+    text-align: center;
+    font-family: "Engravers";
+    letter-spacing: .5px;
+    font-size: 1.5em;
+    flex: 8;
+}
+
+nav button {
+    color: white;
+    background: #386385;
+    padding: 7px 10px;
+    height: 30px;
+    border: none;
+    min-width: 53px;
+    border-radius: 2px;
+    font-size: .75em;
+    font-weight: bold;
+}
+
+.subscribe-btn {
+    width: 120px;
+}
+
+
+/* =========================
+    Article
+   =========================
+*/
+
+article {
+    text-align: center;
+}
+
+article h1 {
+    font-style: italic;
+    max-width: 600px;
+    /* min-width: 400px; */
+    margin: 0 auto;
+    padding: 20px 200px 20px 20px;
+    text-align: left;
+    font-size: 2.25em;
+}
+
+article h4 {
+    max-width: 600px;
+    /* min-width: 400px; */
+    margin: 0 auto;
+    text-align: justify; 
+    padding: 5px 20px;
+    font-size: 1.5em;
+}
+
+article p {
+    max-width: 600px;
+    /* min-width: 400px; */
+    margin: 0 auto;
+    line-height: 1.25em;
+    text-align: justify;
+    font-size: 1.25em;
+    font-weight: 500;
+    padding: 20px;
+    
+}
+
+.caps {
+    text-transform: uppercase;
+}
+
+
+/* =========================
+    Images
+   =========================
+*/
+
+.image {
+    max-width: 945px;
+    margin: 0 auto;
+}
+
+.image img {
+    max-width: 945px;
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.image figcaption {
+    padding: 10px;
+    color: rgb(95, 93, 93);
+    text-align: left;
+    width: 80%;
+    max-width: 945px;
+}
+
+.image figcaption span {
+    font-size: .7em;
+    color: darkgray;
+}
+
+
+
+
+
+/* =========================
+    Related Articles
+   =========================
+*/
+
+.more-articles {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    
+}
+
+.related {
+    grid-row: span 2;
+    display: flex;
+    flex-flow: column;
+    padding: 10px;
+    border-top: 1px solid black;
+}
+
+.related-stories {
+    flex: 1;
+    display: flex;
+    flex-flow: row wrap;
+}
+
+.editor-picks {
+    padding: 10px;
+    border-top: 1px solid black;
+    max-height: 350px;
+    overflow: hidden;
+}
+
+.editor-picks .story {
+    padding-bottom: 50px;
+}
+
+
+.story {
+    flex: 1;
+    min-width: 220px;
+    margin-right: 20px;
+    margin-bottom: 20px;
+
+}
+
+.story h2 {
+    font-size: 1.1em;
+    font-weight: 500;
+}
+
+.story h5 {
+    color: gray;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: lighter;
+    padding-top: 5px;
+}
+
+.story img {
+    width: 100%;
+}
+
+.popular {
+    grid-row: 1 / span 3;
+    font-size: .8em;
+    grid-column: 2 / 3;
+    padding: 10px;
+    border-top: 1px solid black;
+    margin-right: 30px;
+    margin-left: 30px;
+}
+
+.popular h4, .related h4, .editor-picks h4 {
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 15px 0;
+}
+
+.popular h4 {
+    border-bottom: 1px solid lightgray;
+}
+
+.popular ul li {
+    padding: 15px 0;
+    font-size: 1.25em;
+    border-bottom: 1px solid lightgray;
+}
+
+.popular ul li:last-child {
+    border: none;
+}
+/* =========================
+    Footer
+   =========================
+*/
+
+#goToHome {
+    color:  #145181;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: .5em;
+    font-weight: lighter;
+    float: right;
+}
+
+.primary-footer {
+    display: flex;
+    flex-direction: column;
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 10px 30px;
+    border-top: 4px double lightgray;
+    
+}
+
+.primary-footer h1 {
+    text-align: left;
+}
+
+.listings {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+.listings ul li:first-child {
+    text-transform: uppercase;
+    font-weight: bolder;
+    font-size: .8rem;
+}
+
+.listings ul ul li:hover {
+    text-decoration: underline;
+}
+
+.listings ul .has-sub ul {
+    margin-top: 10px;
+    font-size: 1.1em;
+}
+
+ 
+.listings ul .has-sub ul li {
+    text-transform: capitalize;
+    font-weight: 400;
+    padding: 5px 0;
+}
+
+.subscribe ul li:nth-child(4), .subscribe ul li:nth-child(7) {
+    border-bottom: 1px solid lightgray;
+}
+
+.css-r5ic95 {
+    width: 12px;
+    font-weight: bold;
+}
+
+.listings .subscribe ul li:nth-child(-n+4) {
+    font-size: 1.1em;
+    font-weight: bold;
+}
+
+.listings .subscribe ul li {
+    font-size: .7em;
+}
+
+.secondary-footer {
+    border-top: 1px solid lightgray;
+    font-size: 0.7em;
+    color: gray;
+    font-family: Arial, Helvetica, sans-serif;  
+    display: flex;
+    
+    justify-content: center;
+}
+
+.secondary-footer ul {
+    display: flex;
+    flex-flow: wrap;
+    justify-content: center;
+    padding: 10px;
+    width: 90%;
+}
+
+.secondary-footer ul li {
+    min-width: 100px;
+    padding: 5px;
+    flex: 1;
+}
+
+.secondary-footer ul li:first-child {
+    flex: 5;
+}
+
+
+
+/* UPDATED NAVBAR */
+
+button svg {
+    display: inline-block;
+    height: 16px;
+    vertical-align: sub;
+    width: 16px;
+}
+
+button {
+    background-color: #fff;
+}
+
+.auth a span {
+    border-radius: 3px;
+    cursor: pointer;
+    font-family: nyt-franklin,helvetica,arial,sans-serif;
+    vertical-align: middle;
+    background-color: #567b95;
+    border: 1px solid #326891;
+    color: #fff;
+    font-size: 11px;
+    line-height: 11px;
+    font-weight: 700;
+    padding: 11px 12px 8px;
+    text-transform: uppercase;
+    display: inline-block;
+}
+
+.lang ul li {
+    display: inline-block;
+    font-family: nyt-franklin,helvetica,arial,sans-serif;
+    font-size: 12px;
+    text-transform: uppercase;
+    color: #000;
+    font-weight: 500;
+    margin: auto 8px;
+}
+
+.top {
+    padding: 10px 0;
+}
+
+.top,
+.sections,
+.lang ul {
+    display: flex;
+    justify-content: space-between;
+}
+
+.search {
+    margin-left: 20px;
+}
+
+.lang {
+    margin-left: 15%;
+}
+
+.middle {
+    display: flex;
+}
+
+.middle .logo svg {
+    width: 430px;
+    height: 58px;
+    margin: 6px auto;
+}
+
+.bottom {
+    border-top: 1px solid #ebebeb;
+    border-bottom: 1px solid #000;
+    padding-top: 2px;
+    padding-bottom: 2px;
+}
+
+.bottom:after {
+    content: '';
+    border-bottom: 1px double #000;
+    display: block;
+}
+
+.bottom ul {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 60px;
+    padding: 5px 0 4px;
+}
+
+.bottom ul li {
+    display: inline-block;
+    font-family: nyt-franklin,helvetica,arial,sans-serif;
+    font-size: 0.75rem;
+    line-height: 1rem;
+    font-weight: 500;
+}
+
+.bottom ul li a {
+    color: #000;
+    transition: background 0.6s ease;
+    padding: 5px;
+}
+
+.bottom ul li a:hover {
+    background-color: #f7f7f7;
+}
+
+
+
+
+@media only screen and (max-width: 1150px) {
+    .primary-footer h1, .listings ul li:first-child {
+        border-bottom: 1px solid lightgray;
+        padding: 12px 0;
+    }
+
+    .listings ul:nth-of-type(5) .has-sub {
+        border-bottom: none;
+    }
+
+    .listings {
+        flex-direction: column;
+    }
+
+    .has-sub ul, .subscribe {
+        display: none;
+        columns: 2;
+        
+    }
+
+    .has-sub ul li:first-child {
+        border-bottom: none;
+    }
+
+
+    .active ul {
+        display: block;
+        color: black;
+    }
+
+    .active {
+        color: rgb(184, 179, 179);
+    }
+
+}
+
+@media only screen and (max-width: 750px) {
+    article h1 {
+        padding: 10px;
+    }
+
+    .popular {
+        display: none;
+    }
+
+    .more-articles {
+        display: flex;
+        flex-flow: column;
+    }
+
+    .hide {
+        display: none;
+    }
+
+    .image figcaption {
+        width: 100%;
+    }
+}
